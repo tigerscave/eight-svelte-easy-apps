@@ -1,3 +1,4 @@
+//モジュールコンテキスト内で、localStorageの値を取得し、コンポーネント内で利用できるようにする
 <script context="module">
   import { writable } from 'svelte/store';
 
