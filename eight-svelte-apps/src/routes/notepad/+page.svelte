@@ -1,14 +1,26 @@
-<script>
-  import { onMount} from 'svelte'
+<script context="module">
   import { writable } from 'svelte/store';
 
-  const memo = writable (localStorage.getItem('memo') || '');
+  export const memo = writable('');
+</script>
+
+<script>
+  import { onMount } from 'svelte';
+  let isSaved = false;
 
   onMount(() => {
-    memo.set(localStorage.getItem('memo') || '');
+    const storedMemo = localStorage.getItem('memo');
+    if (storedMemo) {
+      memo.set(storedMemo);
+    }
   });
+
   function saveMemo() {
     localStorage.setItem('memo', $memo);
+    isSaved = true;
+    setTimeout(() => {
+      isSaved = false;
+    }, 1000);
   }
 
   function clearMemo() {
@@ -16,14 +28,15 @@
     localStorage.removeItem('memo');
   }
 
+
 </script>
 
 <main>
   <h1>メモ帳</h1>
   <textarea bind:value={$memo} />
   <div class="container align-right">
-    {#if $memo}
-    <span>保存しました！</span> 
+    {#if $memo && isSaved}
+    <span class="appear show">保存しました！</span> 
     {/if}
     <button id="clear" on:click={clearMemo}>削除</button>
     <button id="save" on:click={saveMemo}>保存</button>
@@ -73,6 +86,8 @@
   .align-right {
     justify-content: flex-end;
   }
-
+  .appear.show {
+  opacity: 1;
+}
 
 </style>
