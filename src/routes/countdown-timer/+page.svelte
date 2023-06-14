@@ -2,6 +2,10 @@
   import { onMount, onDestroy } from 'svelte';
 
   let countingNow = true;//ボタンを押した後、カウント中はONにする。
+
+  function toggle(){
+    countingNow = !countingNow
+  }
   
   const restTime = new Date().getTime() + 3 * 1000; //残り時間を３秒と定義する。
   const countdown = restTime - new Date().getTime(); //残り時間から現在時刻を引いて、カウントダウンを行う。
@@ -29,9 +33,9 @@
   <main>
     <p>{minutesFormatted}:{secondsFormatted}</p>
     {#if countingNow}
-    <button disabled={!countingNow} on:click={handleClick}>Start</button><!--通常時はdisabledはOFF-->
+    <button disabled={!countingNow} on:click={toggle}>Start</button><!--通常時はdisabledはOFF-->
     {:else}
-    <button disabled={countingNow}>Start</button> <!--countingNowがON（カウント中)はdisabled)-->
+    <button id = btn disabled={countingNow} on:click={toggle}>...Wait</button> <!--countingNowがON（カウント中)はdisabled)-->
     {/if}
   </main>
 </body>
@@ -75,6 +79,9 @@
   button:active {
     opacity: 0.4;
   }
-
+  
+  .btn {
+    background-color: gray;
+  }
 
 </style>
