@@ -1,6 +1,10 @@
 <script>
   import { onMount, onDestroy } from 'svelte';
 
+  let countingNow = true;//ボタンを押した後、カウント中はONにする。
+  
+  const restTime = new Date().getTime() + 3 * 1000; //残り時間を３秒と定義する。
+  const countdown = restTime - new Date().getTime(); //残り時間から現在時刻を引いて、カウントダウンを行う。
   const totalSeconds = Math.floor(countdown / 1000); //Math.floorで小数を切り捨て。1000で割って、ミリ秒→秒単位で表示する。
   const minutes = Math.floor(totalSeconds / 60); //0〜99秒を60で割って、余りを分単位で表示する。
   const seconds = totalSeconds % 60; //0〜99秒を60で割って、余りを0〜59秒単位で表示する。
@@ -10,27 +14,25 @@
 
   function handleClick() {//ボタンが押されたときの処理
     onMount(() => {
-      let restTime = new Date().getTime() + 3 * 1000; //残り時間を３秒と定義する
-      let countdown = restTime - new Date().getTime(); //残り時間から現在時刻を引いて、カウントダウンを行う。
-      btn.disabled = true; //カウントダウン中は、ボタンをdisaledにする。
-      btn.classList.add("inactive"); // カウントダウン中は、inactiveにする。
       return countdown; //カウントダウン中の値を返す。
     });
-  }
+  };
   
-  let zeroTime = restTime === new Date().getTime(); // 残り時間が0になったときの定義
+  const zeroTime = restTime === new Date().getTime(); // 残り時間が0になったときの定義
 
   onDestroy(() => {
-    clearInterval(zeroTime); //カウントダウンが０になったら、３に戻る処理を行う。
-    btn.disabled = false; //ボタンを有効化する。
-    btn.classList.remove("inactive"); //inactive要素を取り除く。
+    clearInterval(zeroTime); //カウントダウンの値が「00:00」になったら、「00:03」に戻る処理を行う。
   });
 </script>
 
 <body>
   <main>
     <p>{minutesFormatted}:{secondsFormatted}</p>
-    <button id="btn" on:click={handleClick}>Start</button>
+    {#if countingNow}
+    <button disabled={!countingNow} on:click={handleClick}>Start</button><!--通常時はdisabledはOFF-->
+    {:else}
+    <button disabled={countingNow}>Start</button> <!--countingNowがON（カウント中)はdisabled)-->
+    {/if}
   </main>
 </body>
 
@@ -74,12 +76,5 @@
     opacity: 0.4;
   }
 
-  .inactive {
-    background: #ddd;
-    color: #444;
-    cursor: default;
-  }
-  .inactive:hover {
-    opacity: 1;
-  }
+
 </style>
