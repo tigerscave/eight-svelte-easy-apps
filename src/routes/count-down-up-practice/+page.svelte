@@ -18,7 +18,7 @@
     toggleCountingDown();
   }
 
-
+//$: { }の役割がまだわかっていないので、調べて書く。
   $: {
     if (countDownInitValue < 0) {
       clearInterval(timerId);// 値が0未満になったら、ループを終える。
@@ -38,7 +38,6 @@
   function startCountUptimer() {
     timerId = setInterval(() => {
       count++;
-      // console.log(count)
     }, 1000);
     toggleCountingUp();
   }
