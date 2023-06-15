@@ -4,7 +4,7 @@
   let timerId;
 
   //カウントダウン機能に必要な定義
-  let countDownFirstValue = 3;
+  let countDownInitValue = 3;
   let isCountingDown = true;
 
   function toggleCountingDown() {
@@ -12,21 +12,17 @@
   }
   function startCountDowntimer() {
     timerId = setInterval(() => {
-      countDownFirstValue--;
+      countDownInitValue--;
       // console.log(count)
     }, 1000);
     toggleCountingDown();
   }
 
-  function stopCountDownTimer() {
-    clearInterval(timerId);
-    toggleCountingDown();
-  }
 
   $: {
-    if (countDownFirstValue < 0) {
+    if (countDownInitValue < 0) {
       clearInterval(timerId);// 値が0未満になったら、ループを終える。
-      countDownFirstValue = 3;//初期値を3に設定する。
+      countDownInitValue = 3;//初期値を3に設定する。
     }
   }
 
@@ -51,16 +47,17 @@
     clearInterval(timerId);
     toggleCountingUp();
   }
+
 </script>
 
 <body>
   <main>
     <div>カウントダウン↓</div>
-    <p>{countDownFirstValue}</p>
-    {#if countDownFirstValue === 3}
+    <p>{countDownInitValue}</p>
+    {#if countDownInitValue === 3}
       <button  on:click|once = {startCountDowntimer}>Start</button>
     {:else}
-      <button class:bg-gray={ 0 <= countDownFirstValue < 3} disabled>...Wait</button>
+      <button class:bg-gray={ 0 <= countDownInitValue < 3} disabled>...Wait</button>
     {/if}
     <br>
     <br>
