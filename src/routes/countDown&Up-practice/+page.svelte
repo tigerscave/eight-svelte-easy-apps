@@ -58,9 +58,9 @@
     <div>カウントダウン↓</div>
     <p>{countDownFirstValue}</p>
     {#if countDownFirstValue === 3}
-      <button  on:click={startCountDowntimer}>Start</button>
+      <button  on:click|once = {startCountDowntimer}>Start</button>
     {:else}
-      <button class:isCountingDown={!isCountingDown} disabled>...Wait</button>
+      <button class:bg-gray={ 0 <= countDownFirstValue < 3} disabled>...Wait</button>
     {/if}
     <br>
     <br>
@@ -111,7 +111,7 @@
     opacity: 0.4;
   }
  
-  .isCountingDown {
+  .bg-gray {
     background-color: gray;
   }
 
