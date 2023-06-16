@@ -18,7 +18,7 @@
     toggleCountingDown();
   }
 
-//$: { }の役割がまだわかっていないので、調べて書く。
+//$: 変数の値の変化に応じて、自動的に処理を行う。今回は、値が0未満の条件時に、実行する。
   $: {
     if (countDownInitValue < 0) {
       clearInterval(timerId);// 値が0未満になったら、ループを終える。
