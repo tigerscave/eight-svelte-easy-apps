@@ -1,4 +1,5 @@
 <script>
+  import Answer from './Answer.svelte';
 
   const quizzes = [
     {
@@ -27,11 +28,11 @@
     let isCorrect = quizzes.answers === quizzes.correctAnswer;
 
     if(isCorrect) {
-      answer = answer + '-正解！';
+      answer = "answer" + '-正解！';
       answer.style.color = green;
     }
     else {
-      answer = answer + '-不正解…';
+      answer = "answer" + '-不正解…';
       answer.style.color = red;
     }
   }
