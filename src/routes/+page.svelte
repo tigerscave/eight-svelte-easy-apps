@@ -6,6 +6,9 @@
 <li><a href="/count-down-up-practice">カウントダウン＆カウントアップの機能練習</a></li>
 <li><a href="/three-choice-quiz-practice">3択クイズの機能練習</a></li>
 <li><a href="/slide-show">スライドショー</a></li>
+<br>
+<li><a href="/clanet-mock">クラネットモック</a></li>
+
 
 
 

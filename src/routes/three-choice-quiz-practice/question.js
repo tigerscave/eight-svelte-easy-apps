@@ -1,8 +1,8 @@
-export const quizzes = [
+  export const quizzes = [
   {
     question: "①出身地は？",
-    answers: ["愛知県", "高知県", "山口県"],//[]で囲むのが、配列のリテラル表現
-    correctAnswer: 0,
+    answers: ["愛知県", "高知県", "山口県"],
+    correctAnswer: 0,   //"愛知県" = quizzes[0].answers[quizzez[0].correctAnswer]
   },
   {
     question: "②好きな動物は？",
