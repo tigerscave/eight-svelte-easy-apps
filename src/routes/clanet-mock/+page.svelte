@@ -1,5 +1,5 @@
 <script>
-import Panel from "./panel.svelte";
+import Panel from "./panel-component/panel.svelte";
 import Lever from "./lever.svelte";
 import Settings from "./settings.svelte";
 </script>

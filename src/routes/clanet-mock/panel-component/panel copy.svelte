@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   let activeRed = false; //初期値をOFF
   let activeBlue = false; //初期値をOFF
 
@@ -150,4 +150,4 @@
   .activeBlue {
     background-color: blue;
   }
-</style>
+</style> -->
