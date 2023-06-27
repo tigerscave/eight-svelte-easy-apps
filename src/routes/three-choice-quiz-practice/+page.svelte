@@ -1,11 +1,15 @@
 <script>
-  import Question from "./question.svelte";
+
+  import { quizzes } from "./quizzes.js";
+  import QuestionPanel from "./question-panel.svelte";
 </script>
 
 <body>
   <main>
     <h1>三択クイズ</h1>
-    <Question />
+    {#each quizzes as quiz}
+      <QuestionPanel quiz={quiz}/>
+    {/each}
   </main>
 </body>
 
