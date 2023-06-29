@@ -1,20 +1,19 @@
 <script>
-import Panel from "./panel-component/panel.svelte";
-import Lever from "./lever.svelte";
-import Settings from "./settings.svelte";
+import MainPanel from "./mainSwitchPanel/baseSwitch.svelte";
+import MainSettingsPanel from "./mainSettingsPanel/mainSettings.svelte";
+import Settings from "./customSettingsPanel/baseSettings.svelte";
 </script>
 
 <body>
   <div class="touchPanel">
     <div class="touchPanelTitle">CRANET&nbsp;&emsp;集約タッチパネル&nbsp;&emsp;v2.0</div>
-    <Panel />
-    <Lever />
+    <MainPanel />
+    <MainSettingsPanel />
     <Settings />
   </div>
 </body>
 
 <style>
-
 .touchPanel {
   margin-bottom: 0.5em;
   border: 1px solid black;
