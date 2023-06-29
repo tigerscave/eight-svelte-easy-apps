@@ -5,8 +5,6 @@
   let isCorrect;
 
   function checkAnswer(word) {
-    console.log(word)
-    console.log(correctAnswer)
     if(word === correctAnswer) {
       isCorrect = true
     } else {

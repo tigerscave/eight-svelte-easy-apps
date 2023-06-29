@@ -1,15 +1,15 @@
 <script>
-import MainPanel from "./mainSwitchPanel/baseSwitch.svelte";
-import MainSettingsPanel from "./mainSettingsPanel/mainSettings.svelte";
-import Settings from "./customSettingsPanel/baseSettings.svelte";
+import MainControlPanel from "./mainControlPanel/baseControl.svelte";
+import MainSettingsPanel from "./mainSettingsPanel/mainTwoSettings.svelte";
+import AdvancedSettingsPanel from "./advancedSettingsPanel/baseTwoSettings.svelte";
 </script>
 
 <body>
   <div class="touchPanel">
     <div class="touchPanelTitle">CRANET&nbsp;&emsp;集約タッチパネル&nbsp;&emsp;v2.0</div>
-    <MainPanel />
+    <MainControlPanel />
     <MainSettingsPanel />
-    <Settings />
+    <AdvancedSettingsPanel />
   </div>
 </body>
 
