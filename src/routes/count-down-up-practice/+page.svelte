@@ -1,5 +1,4 @@
 <script>
-
   //２つのアプリに共通して必要な定義
   let timerId;
 
@@ -18,11 +17,11 @@
     toggleCountingDown();
   }
 
-//$: { }の役割がまだわかっていないので、調べて書く。
+  //$: 変数の値の変化に応じて、自動的に処理を行う。今回は、値が0未満の条件時に、実行する。
   $: {
     if (countDownInitValue < 0) {
-      clearInterval(timerId);// 値が0未満になったら、ループを終える。
-      countDownInitValue = 3;//初期値を3に設定する。
+      clearInterval(timerId); // 値が0未満になったら、ループを終える。
+      countDownInitValue = 3; //初期値を3に設定する。
     }
   }
 
@@ -46,7 +45,6 @@
     clearInterval(timerId);
     toggleCountingUp();
   }
-
 </script>
 
 <body>
@@ -54,12 +52,14 @@
     <div>カウントダウン↓</div>
     <p>{countDownInitValue}</p>
     {#if countDownInitValue === 3}
-      <button  on:click|once = {startCountDowntimer}>Start</button>
+      <button on:click|once={startCountDowntimer}>Start</button>
     {:else}
-      <button class:bg-gray={ 0 <= countDownInitValue < 3} disabled>...Wait</button>
+      <button class:bg-gray={0 <= countDownInitValue < 3} disabled
+        >...Wait</button
+      >
     {/if}
-    <br>
-    <br>
+    <br />
+    <br />
     <div>カウントアップ</div>
     <p>{count}</p>
     {#if isCountingUp}
@@ -106,9 +106,8 @@
   button:active {
     opacity: 0.4;
   }
- 
+
   .bg-gray {
     background-color: gray;
   }
-
 </style>
